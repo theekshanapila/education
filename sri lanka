@@ -1,1 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & Inquiries - Science With Gayum</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="grid-bg-pattern">
 
+  <header class="navbar glass-panel">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon"><i class="fa-solid fa-atom"></i></div>
+        <div>
+          <span class="text-white text-lg font-extrabold tracking-tight block leading-none">SCIENCE WITH GAYUM</span>
+          <span class="text-xs text-cyan-400 font-medium">විද්‍යාව සරලව</span>
+        </div>
+      </a>
+      <nav class="hidden md:flex">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="classes.html" class="nav-link">Classes</a></li>
+          <li><a href="notes.html" class="nav-link">Revision Notes</a></li>
+          <li><a href="teacher.html" class="nav-link">Teacher Profile</a></li>
+          <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+          <li><a href="contact.html" class="nav-link active">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-wrapper section-padding">
+    <div class="container max-w-4xl space-y-8">
+      <div class="text-center max-w-2xl mx-auto">
+        <h1 class="text-3xl md:text-5xl font-extrabold text-white">Student Inquiry & Contact</h1>
+        <p class="text-gray-400 text-sm mt-2">Have questions regarding class schedules, fees, or hall locations?</p>
+      </div>
+
+      <div class="glass-panel p-8 rounded-2xl">
+        <form id="inquiry-form" class="space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-gray-300 mb-1">Student Full Name *</label>
+              <input type="text" id="student-name" required placeholder="e.g. Kasun Perera" class="w-full bg-slate-900 border border-white/10 rounded-lg px-4 py-2.5 text-xs text-white focus:outline-none focus:border-cyan-400">
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-gray-300 mb-1">WhatsApp Phone Number *</label>
+              <input type="tel" id="contact-phone" required placeholder="07X XXXXXXX" class="w-full bg-slate-900 border border-white/10 rounded-lg px-4 py-2.5 text-xs text-white focus:outline-none focus:border-cyan-400">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-gray-300 mb-1">Grade Level *</label>
+              <select id="student-grade" class="w-full bg-slate-900 border border-white/10 rounded-lg px-4 py-2.5 text-xs text-white focus:outline-none focus:border-cyan-400">
+                <option value="Grade 10">Grade 10</option>
+                <option value="Grade 11">Grade 11</option>
+                <option value="O/L Revision">O/L Revision</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-gray-300 mb-1">Preferred Format *</label>
+              <select id="learning-format" class="w-full bg-slate-900 border border-white/10 rounded-lg px-4 py-2.5 text-xs text-white focus:outline-none focus:border-cyan-400">
+                <option value="Physical Hall">Physical Hall Session</option>
+                <option value="Online Zoom">Online Zoom Session</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-gray-300 mb-1">Message / Inquiry Details *</label>
+            <textarea id="inquiry-msg" rows="4" required placeholder="Ask about class locations, times, or notes..." class="w-full bg-slate-900 border border-white/10 rounded-lg px-4 py-2.5 text-xs text-white focus:outline-none focus:border-cyan-400"></textarea>
+          </div>
+
+          <button type="button" id="whatsapp-send-btn" class="btn-primary w-full py-3 text-xs font-bold">
+            <i class="fa-brands fa-whatsapp text-base"></i> Send Inquiry via WhatsApp
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    // WhatsApp Direct Message Builder
+    document.getElementById('whatsapp-send-btn').addEventListener('click', () => {
+      const name = document.getElementById('student-name').value.trim();
+      const phone = document.getElementById('contact-phone').value.trim();
+      const grade = document.getElementById('student-grade').value;
+      const format = document.getElementById('learning-format').value;
+      const msg = document.getElementById('inquiry-msg').value.trim();
+
+      if (!name || !phone || !msg) {
+        alert('Please fill in all required fields before sending.');
+        return;
+      }
+
+      const formattedText = `Hello Gayum Sir,%0A%0A*New Science Class Inquiry*%0A• Name: ${encodeURIComponent(name)}%0A• Phone: ${encodeURIComponent(phone)}%0A• Grade: ${encodeURIComponent(grade)}%0A• Format: ${encodeURIComponent(format)}%0A%0A*Message:*%0A${encodeURIComponent(msg)}`;
+      
+      // WhatsApp Target URL (Replace with actual phone number)
+      window.open(`https://wa.me/94700000000?text=${formattedText}`, '_blank');
+    });
+  </script>
+</body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard - Science With Gayum</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="grid-bg-pattern">
+
+  <header class="navbar glass-panel">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon"><i class="fa-solid fa-atom"></i></div>
+        <div>
+          <span class="text-white text-lg font-extrabold tracking-tight block leading-none">SCIENCE WITH GAYUM</span>
+          <span class="text-xs text-cyan-400 font-medium">ශිෂ්‍ය පුවරුව</span>
+        </div>
+      </a>
+      <nav class="hidden md:flex">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="classes.html" class="nav-link">Classes</a></li>
+          <li><a href="notes.html" class="nav-link">Revision Notes</a></li>
+          <li><a href="dashboard.html" class="nav-link active">Dashboard</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-wrapper section-padding">
+    <div class="container space-y-6">
+      
+      <!-- Security & Demo Notice Banner -->
+      <div class="glass-panel p-4 rounded-xl border-l-4 border-amber-400 text-xs text-amber-200">
+        <i class="fa-solid fa-shield-halved text-amber-400 mr-2"></i>
+        <strong>Demonstration Portal Notice:</strong> This interface is a frontend demonstration preview. Secure accounts and protected video streams require an active server backend.
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+        <!-- Sidebar Navigation -->
+        <div class="md:col-span-3 space-y-2">
+          <div class="glass-panel p-4 rounded-xl space-y-1">
+            <button class="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold bg-cyan-500/20 text-cyan-300">
+              <i class="fa-solid fa-book-open mr-2"></i> My Enrolled Classes
+            </button>
+            <button class="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold text-gray-300 hover:bg-white/5">
+              <i class="fa-solid fa-file-pdf mr-2"></i> Class Resources
+            </button>
+            <button class="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold text-gray-300 hover:bg-white/5">
+              <i class="fa-solid fa-chart-line mr-2"></i> Progress Analytics
+            </button>
+          </div>
+        </div>
+
+        <!-- Main Dashboard Content -->
+        <div class="md:col-span-9 space-y-6">
+          <div class="glass-panel p-6 rounded-xl">
+            <h2 class="text-xl font-bold text-white">Welcome Back, Science Student!</h2>
+            <p class="text-xs text-gray-400 mt-1">Grade 11 Science & O/L Revision Target Batch</p>
+
+            <!-- Sample Progress Stats -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-6">
+              <div class="glass-card p-4 text-center">
+                <span class="text-2xl font-extrabold text-cyan-400">85%</span>
+                <span class="text-[11px] text-gray-400 block mt-1">Syllabus Completed</span>
+              </div>
+              <div class="glass-card p-4 text-center">
+                <span class="text-2xl font-extrabold text-purple-400">12</span>
+                <span class="text-[11px] text-gray-400 block mt-1">PDF Notes Downloaded</span>
+              </div>
+              <div class="glass-card p-4 text-center col-span-2 sm:col-span-1">
+                <span class="text-2xl font-extrabold text-emerald-400">04</span>
+                <span class="text-[11px] text-gray-400 block mt-1">Model Papers Solved</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teacher Profile - Science With Gayum</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="grid-bg-pattern">
+
+  <header class="navbar glass-panel">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon"><i class="fa-solid fa-atom"></i></div>
+        <div>
+          <span class="text-white text-lg font-extrabold tracking-tight block leading-none">SCIENCE WITH GAYUM</span>
+          <span class="text-xs text-cyan-400 font-medium">විද්‍යාව සරලව</span>
+        </div>
+      </a>
+      <nav class="hidden md:flex">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="classes.html" class="nav-link">Classes</a></li>
+          <li><a href="notes.html" class="nav-link">Revision Notes</a></li>
+          <li><a href="teacher.html" class="nav-link active">Teacher Profile</a></li>
+          <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-wrapper section-padding">
+    <div class="container max-w-5xl space-y-12">
+      
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+        <!-- Teacher Portrait Placeholder -->
+        <div class="md:col-span-5 flex justify-center">
+          <div class="glass-panel p-6 rounded-2xl text-center w-full max-w-sm border border-cyan-500/30">
+            <div class="w-48 h-48 mx-auto mb-4 rounded-full bg-slate-800 border-4 border-cyan-400 flex items-center justify-center overflow-hidden">
+              <i class="fa-solid fa-user-graduate text-7xl text-cyan-400/60"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-white">Gayum</h2>
+            <p class="text-xs text-cyan-400">Secondary Science Educator</p>
+            <p class="text-xs text-gray-400 mt-1">විද්‍යා උපදේශක</p>
+          </div>
+        </div>
+
+        <!-- Bio & Teaching Philosophy -->
+        <div class="md:col-span-7 space-y-4">
+          <span class="text-xs font-bold text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded-md">Educator Profile</span>
+          <h1 class="text-3xl md:text-5xl font-extrabold text-white">Empowering Science Students Across Sri Lanka</h1>
+          <p class="text-cyan-300 font-semibold italic text-sm">"විද්‍යාව යනු කටපාඩම් කරන විෂයක් නොව, තර්කානුකූලව අවබෝධ කරගත යුතු සංකල්ප සමූහයකි."</p>
+          <p class="text-xs md:text-sm text-gray-300 leading-relaxed">
+            Dedicated secondary school science teacher focusing on Grade 10, Grade 11, and O/L examination preparation. My teaching methodology bridges complex theoretical concepts in Physics and Chemistry with logical step-by-step explanations and structured summaries.
+          </p>
+
+          <div class="pt-2 flex gap-3">
+            <a href="contact.html" class="btn-primary"><i class="fa-brands fa-whatsapp"></i> Direct WhatsApp Inquiry</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Revision Notes Library - Science With Gayum</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="grid-bg-pattern">
+
+  <header class="navbar glass-panel">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon"><i class="fa-solid fa-atom"></i></div>
+        <div>
+          <span class="text-white text-lg font-extrabold tracking-tight block leading-none">SCIENCE WITH GAYUM</span>
+          <span class="text-xs text-cyan-400 font-medium">විද්‍යාව සරලව</span>
+        </div>
+      </a>
+      <nav class="hidden md:flex">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="classes.html" class="nav-link">Classes</a></li>
+          <li><a href="notes.html" class="nav-link active">Revision Notes</a></li>
+          <li><a href="teacher.html" class="nav-link">Teacher Profile</a></li>
+          <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-wrapper section-padding">
+    <div class="container space-y-8">
+      <div class="text-center max-w-2xl mx-auto">
+        <h1 class="text-3xl md:text-5xl font-extrabold text-white">Science Resource Library</h1>
+        <p class="text-gray-400 text-sm mt-2">Download Grade 10, Grade 11, and O/L Science revision notes, short summaries, and worksheets.</p>
+      </div>
+
+      <!-- Search & Filter Control Bar -->
+      <div class="glass-panel p-4 rounded-xl flex flex-col md:flex-row gap-4 justify-between items-center">
+        <div class="w-full md:w-1/2 relative">
+          <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400 text-sm"></i>
+          <input type="text" id="resource-search" placeholder="Search by lesson title or keyword (e.g. Electricity, Motion)..." class="w-full bg-slate-900 border border-white/10 rounded-lg pl-9 pr-4 py-2 text-xs text-white focus:outline-none focus:border-cyan-400">
+        </div>
+
+        <div class="flex gap-2 w-full md:w-auto">
+          <select id="grade-filter" class="bg-slate-900 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none">
+            <option value="all">All Grades</option>
+            <option value="grade10">Grade 10</option>
+            <option value="grade11">Grade 11</option>
+            <option value="ol">O/L Revision</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Resource Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="resources-grid">
+        
+        <!-- Resource Card 1 -->
+        <div class="glass-card p-6 flex flex-col justify-between resource-card" data-grade="grade10" data-title="electricity current circuits">
+          <div class="space-y-3">
+            <span class="text-xs font-bold text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded-md border border-cyan-500/20">Grade 10 Physics</span>
+            <h3 class="text-lg font-bold text-white">Electricity & Electric Circuits</h3>
+            <p class="text-xs text-gray-400">විද්‍යුතය සහ විද්‍යුත් පරිපථ - Complete short notes and calculation guidelines.</p>
+          </div>
+          <div class="pt-6 flex gap-2">
+            <a href="assets/pdfs/grade10/electricity-short-notes.pdf" target="_blank" class="btn-secondary w-full text-xs"><i class="fa-solid fa-file-pdf"></i> View PDF</a>
+            <a href="assets/pdfs/grade10/electricity-short-notes.pdf" download class="btn-primary w-full text-xs"><i class="fa-solid fa-download"></i> Download</a>
+          </div>
+        </div>
+
+        <!-- Resource Card 2 -->
+        <div class="glass-card p-6 flex flex-col justify-between resource-card" data-grade="grade11" data-title="chemical reactions bonding chemistry">
+          <div class="space-y-3">
+            <span class="text-xs font-bold text-purple-400 bg-purple-500/10 px-2.5 py-1 rounded-md border border-purple-500/20">Grade 11 Chemistry</span>
+            <h3 class="text-lg font-bold text-white">Chemical Reactions Summary</h3>
+            <p class="text-xs text-gray-400">රසායනික ප්‍රතික්‍රියා - Equation balancing techniques and reaction types.</p>
+          </div>
+          <div class="pt-6 flex gap-2">
+            <a href="assets/pdfs/grade11/chemical-reactions-summary.pdf" target="_blank" class="btn-secondary w-full text-xs"><i class="fa-solid fa-file-pdf"></i> View PDF</a>
+            <a href="assets/pdfs/grade11/chemical-reactions-summary.pdf" download class="btn-primary w-full text-xs"><i class="fa-solid fa-download"></i> Download</a>
+          </div>
+        </div>
+
+        <!-- Resource Card 3 -->
+        <div class="glass-card p-6 flex flex-col justify-between resource-card" data-grade="ol" data-title="model paper target revision">
+          <div class="space-y-3">
+            <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-md border border-emerald-500/20">G.C.E. O/L Model</span>
+            <h3 class="text-lg font-bold text-white">O/L Target Model Paper 01</h3>
+            <p class="text-xs text-gray-400">අනුමාන ප්‍රශ්න පත්‍රය 01 - Structured essay and MCQ question set with answers.</p>
+          </div>
+          <div class="pt-6 flex gap-2">
+            <a href="assets/pdfs/ol-revision/2025-model-paper-01.pdf" target="_blank" class="btn-secondary w-full text-xs"><i class="fa-solid fa-file-pdf"></i> View PDF</a>
+            <a href="assets/pdfs/ol-revision/2025-model-paper-01.pdf" download class="btn-primary w-full text-xs"><i class="fa-solid fa-download"></i> Download</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- No Results State -->
+      <div id="no-results" class="hidden text-center py-12 glass-panel rounded-2xl">
+        <i class="fa-solid fa-folder-open text-4xl text-gray-500 mb-3"></i>
+        <h3 class="text-lg font-bold text-white">No Matching Resources Found</h3>
+        <p class="text-xs text-gray-400 mt-1">Try adjusting your search terms or grade filter.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    // Search and Filter Logic
+    const searchInput = document.getElementById('resource-search');
+    const gradeSelect = document.getElementById('grade-filter');
+    const cards = document.querySelectorAll('.resource-card');
+    const noResults = document.getElementById('no-results');
+
+    function filterResources() {
+      const query = searchInput.value.toLowerCase().trim();
+      const selectedGrade = gradeSelect.value;
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const title = card.getAttribute('data-title').toLowerCase();
+        const grade = card.getAttribute('data-grade');
+
+        const matchesQuery = query === '' || title.includes(query);
+        const matchesGrade = selectedGrade === 'all' || grade === selectedGrade;
+
+        if (matchesQuery && matchesGrade) {
+          card.style.display = 'flex';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      if (visibleCount === 0) {
+        noResults.classList.remove('hidden');
+      } else {
+        noResults.classList.add('hidden');
+      }
+    }
+
+    searchInput.addEventListener('input', filterResources);
+    gradeSelect.addEventListener('change', filterResources);
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class Details - Science With Gayum</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="grid-bg-pattern">
+
+  <header class="navbar glass-panel">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon"><i class="fa-solid fa-atom"></i></div>
+        <div>
+          <span class="text-white text-lg font-extrabold tracking-tight block leading-none">SCIENCE WITH GAYUM</span>
+          <span class="text-xs text-cyan-400 font-medium">විද්‍යාව සරලව</span>
+        </div>
+      </a>
+      <nav class="hidden md:flex">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="classes.html" class="nav-link active">Classes</a></li>
+          <li><a href="notes.html" class="nav-link">Revision Notes</a></li>
+          <li><a href="teacher.html" class="nav-link">Teacher Profile</a></li>
+          <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-wrapper section-padding">
+    <div class="container max-w-4xl glass-panel p-8 rounded-2xl space-y-6">
+      <div id="course-details-content">
+        <!-- Dynamically rendered via URL parameter or fallback -->
+        <h1 id="course-title" class="text-3xl font-extrabold text-white">Class Details Loading...</h1>
+        <p id="course-description" class="text-gray-300 text-sm mt-2">Loading course information...</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+          <div class="glass-card p-4">
+            <h3 class="text-xs font-bold text-cyan-400 uppercase">Syllabus Topics Covered</h3>
+            <ul id="course-topics" class="text-xs text-gray-300 mt-2 space-y-1">
+              <!-- JS Populated -->
+            </ul>
+          </div>
+
+          <div class="glass-card p-4">
+            <h3 class="text-xs font-bold text-purple-400 uppercase">Schedule & Format</h3>
+            <p id="course-schedule" class="text-xs text-gray-300 mt-2">[Editable Schedule Placeholder]</p>
+          </div>
+        </div>
+
+        <div class="pt-4 flex gap-4">
+          <a href="contact.html" class="btn-primary"><i class="fa-brands fa-whatsapp"></i> Contact to Join</a>
+          <a href="classes.html" class="btn-secondary"><i class="fa-solid fa-arrow-left"></i> Back to Classes</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    // URL Parameter Course Reader Script
+    document.addEventListener('DOMContentLoaded', () => {
+      const courseKey = getQueryParam('course') || 'grade10';
+      
+      const coursesData = {
+        'grade10': {
+          title: 'Grade 10 Science Theory Class',
+          description: 'Comprehensive Grade 10 Science course designed to build core principles across Physics, Chemistry, and Biology.',
+          topics: ['• Electricity & Ohm\'s Law', '• Chemical Bonding & Valence', '• Plant Organ Systems', '• Light Reflection & Refraction'],
+          schedule: 'Weekly Sessions: [Editable Time Slot] | Physical Hall & Zoom Live Stream'
+        },
+        'grade11': {
+          title: 'Grade 11 Science Master Class',
+          description: 'Targeted preparation for Grade 11 students aiming for top distinction in G.C.E. O/L Examinations.',
+          topics: ['• Electrochemistry & Electrolysis', '• Newton\'s Laws of Motion', '• Human Biological Systems', '• Genetics & Inheritance'],
+          schedule: 'Weekly Sessions: [Editable Time Slot] | Physical Hall & Zoom Live Stream'
+        },
+        'ol-revision': {
+          title: 'G.C.E. O/L Speed Revision & Paper Class',
+          description: 'Fast-paced syllabus revision with step-by-step past paper discussions and short note reviews.',
+          topics: ['• 10-Year O/L Past Paper Drilling', '• Model Question Paper Discussions', '• Rapid Physics Formula Revisions', '• Biology Essay Techniques'],
+          schedule: 'Special Weekend Batches | Physical Hall & Recorded Access'
+        }
+      };
+
+      const selected = coursesData[courseKey] || coursesData['grade10'];
+      
+      document.getElementById('course-title').textContent = selected.title;
+      document.getElementById('course-description').textContent = selected.description;
+      document.getElementById('course-schedule').textContent = selected.schedule;
+      
+      const topicsList = document.getElementById('course-topics');
+      topicsList.innerHTML = selected.topics.map(t => `<li>${t}</li>`).join('');
+    });
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Catalogue - Science With Gayum</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="grid-bg-pattern">
+
+  <header class="navbar glass-panel">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon"><i class="fa-solid fa-atom"></i></div>
+        <div>
+          <span class="text-white text-lg font-extrabold tracking-tight block leading-none">SCIENCE WITH GAYUM</span>
+          <span class="text-xs text-cyan-400 font-medium">විද්‍යාව සරලව</span>
+        </div>
+      </a>
+      <nav class="hidden md:flex">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="classes.html" class="nav-link active">Classes</a></li>
+          <li><a href="notes.html" class="nav-link">Revision Notes</a></li>
+          <li><a href="teacher.html" class="nav-link">Teacher Profile</a></li>
+          <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <button id="mobile-toggle" class="mobile-toggle"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </header>
+
+  <main class="main-wrapper section-padding">
+    <div class="container space-y-8">
+      <div class="text-center max-w-2xl mx-auto">
+        <h1 class="text-3xl md:text-5xl font-extrabold text-white">Class Programmes & Revision</h1>
+        <p class="text-gray-400 text-sm mt-2">Explore active theory classes, speed revision modules, and paper classes.</p>
+      </div>
+
+      <!-- Course Filter Buttons -->
+      <div class="flex flex-wrap justify-center gap-2" id="course-filter-bar">
+        <button class="btn-primary text-xs filter-btn active" data-filter="all">All Programmes</button>
+        <button class="btn-secondary text-xs filter-btn" data-filter="grade10">Grade 10</button>
+        <button class="btn-secondary text-xs filter-btn" data-filter="grade11">Grade 11</button>
+        <button class="btn-secondary text-xs filter-btn" data-filter="revision">O/L Revision</button>
+      </div>
+
+      <!-- Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="course-grid">
+        
+        <!-- Grade 10 Card -->
+        <div class="glass-card p-6 flex flex-col justify-between course-card" data-category="grade10">
+          <div class="space-y-4">
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-bold text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded-md border border-cyan-500/20">Grade 10 Theory</span>
+              <span class="text-xs text-gray-400"><i class="fa-solid fa-users"></i> Physical / Online</span>
+            </div>
+            <h2 class="text-xl font-bold text-white">Grade 10 Science Comprehensive</h2>
+            <p class="text-xs text-gray-300">Complete curriculum coverage focusing on electricity, chemical bonding, and plant physiology.</p>
+            <div class="text-xs text-gray-400 space-y-1 pt-2 border-t border-white/5">
+              <div><strong class="text-gray-200">Schedule:</strong> [Editable Weekly Time]</div>
+              <div><strong class="text-gray-200">Format:</strong> Live Hall / Zoom Hybrid</div>
+            </div>
+          </div>
+          <div class="pt-6 flex gap-2">
+            <a href="class-details.html?course=grade10" class="btn-secondary w-full text-xs">View Details</a>
+            <a href="contact.html" class="btn-primary w-full text-xs">Contact to Join</a>
+          </div>
+        </div>
+
+        <!-- Grade 11 Card -->
+        <div class="glass-card p-6 flex flex-col justify-between course-card" data-category="grade11">
+          <div class="space-y-4">
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-bold text-purple-400 bg-purple-500/10 px-2.5 py-1 rounded-md border border-purple-500/20">Grade 11 Theory</span>
+              <span class="text-xs text-gray-400"><i class="fa-solid fa-users"></i> Physical / Online</span>
+            </div>
+            <h2 class="text-xl font-bold text-white">Grade 11 Science Master Class</h2>
+            <p class="text-xs text-gray-300">Advanced O/L syllabus units including electrochemistry, motion, force, and genetics.</p>
+            <div class="text-xs text-gray-400 space-y-1 pt-2 border-t border-white/5">
+              <div><strong class="text-gray-200">Schedule:</strong> [Editable Weekly Time]</div>
+              <div><strong class="text-gray-200">Format:</strong> Live Hall / Zoom Hybrid</div>
+            </div>
+          </div>
+          <div class="pt-6 flex gap-2">
+            <a href="class-details.html?course=grade11" class="btn-secondary w-full text-xs">View Details</a>
+            <a href="contact.html" class="btn-primary w-full text-xs">Contact to Join</a>
+          </div>
+        </div>
+
+        <!-- Revision Card -->
+        <div class="glass-card p-6 flex flex-col justify-between course-card" data-category="revision">
+          <div class="space-y-4">
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-md border border-emerald-500/20">G.C.E. O/L</span>
+              <span class="text-xs text-gray-400"><i class="fa-solid fa-paper-plane"></i> Revision</span>
+            </div>
+            <h2 class="text-xl font-bold text-white">O/L Speed Revision & Model Paper</h2>
+            <p class="text-xs text-gray-300">Rigorous past paper drilling, paper structure mastery, and essential short notes.</p>
+            <div class="text-xs text-gray-400 space-y-1 pt-2 border-t border-white/5">
+              <div><strong class="text-gray-200">Schedule:</strong> [Editable Weekly Time]</div>
+              <div><strong class="text-gray-200">Format:</strong> Intensive Revision Sessions</div>
+            </div>
+          </div>
+          <div class="pt-6 flex gap-2">
+            <a href="class-details.html?course=ol-revision" class="btn-secondary w-full text-xs">View Details</a>
+            <a href="contact.html" class="btn-primary w-full text-xs">Contact to Join</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container flex justify-between text-xs text-gray-400">
+      <span>Science With Gayum &copy; 2026.</span>
+      <a href="index.html" class="hover:text-cyan-400">Home</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Client-side Category Filter Logic
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => {
+          b.classList.remove('btn-primary', 'active');
+          b.classList.add('btn-secondary');
+        });
+        btn.classList.remove('btn-secondary');
+        btn.classList.add('btn-primary', 'active');
+
+        const filter = btn.getAttribute('data-filter');
+        document.querySelectorAll('.course-card').forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Science With Gayum - Secondary Science Tuition for Sri Lankan Grade 10, Grade 11 and G.C.E. O/L Students.">
+  <title>Science With Gayum | Master Science, Achieve Your Dreams</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Sinhala:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="grid-bg-pattern">
+
+  <!-- Navigation Bar -->
+  <header class="navbar glass-panel">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon"><i class="fa-solid fa-atom"></i></div>
+        <div>
+          <span class="text-white text-lg font-extrabold tracking-tight block leading-none">SCIENCE WITH GAYUM</span>
+          <span class="text-xs text-cyan-400 font-medium">විද්‍යාව සරලව</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link active" data-lang-en="Home" data-lang-si="මුල් පිටුව">Home</a></li>
+          <li><a href="classes.html" class="nav-link" data-lang-en="Classes" data-lang-si="පන්ති">Classes</a></li>
+          <li><a href="notes.html" class="nav-link" data-lang-en="Revision Notes" data-lang-si="සටහන්">Revision Notes</a></li>
+          <li><a href="teacher.html" class="nav-link" data-lang-en="Teacher" data-lang-si="දේශක">Teacher Profile</a></li>
+          <li><a href="dashboard.html" class="nav-link" data-lang-en="Dashboard" data-lang-si="පුවරුව">Dashboard</a></li>
+          <li><a href="contact.html" class="nav-link" data-lang-en="Contact" data-lang-si="සම්බන්ධ වන්න">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="hidden md:flex items-center gap-3">
+        <button id="lang-switch-btn" class="btn-secondary px-3 py-1.5 text-xs">සිංහල</button>
+        <a href="contact.html" class="btn-primary"><i class="fa-brands fa-whatsapp"></i> Join Class</a>
+      </div>
+
+      <button id="mobile-toggle" class="mobile-toggle" aria-label="Toggle Navigation">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div id="mobile-menu" class="mobile-menu glass-panel">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="classes.html" class="nav-link">Classes</a>
+      <a href="notes.html" class="nav-link">Revision Notes</a>
+      <a href="teacher.html" class="nav-link">Teacher Profile</a>
+      <a href="dashboard.html" class="nav-link">Student Portal</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+  </header>
+
+  <main class="main-wrapper">
+    <!-- Hero Section -->
+    <section class="section-padding relative overflow-hidden">
+      <div class="container grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-semibold">
+            <i class="fa-solid fa-flask"></i> Secondary Science Tuition Program
+          </div>
+          <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
+            Master Science. <br>
+            <span class="text-gradient">Achieve Your Dreams.</span>
+          </h1>
+          <p class="text-xl md:text-2xl font-bold text-cyan-300 font-sinhala">
+            විද්‍යාව සරලව, විශිෂ්ට ප්‍රතිඵල සඳහා!
+          </p>
+          <p class="text-gray-300 text-sm md:text-base max-w-2xl leading-relaxed">
+            Structured Sinhala-medium Science lessons designed specifically for Sri Lankan Grade 10, Grade 11, and O/L students. Simplification of Physics, Chemistry, and Biology concepts with proven exam techniques.
+          </p>
+          <div class="flex flex-wrap gap-4 justify-center lg:justify-start pt-2">
+            <a href="classes.html" class="btn-primary text-base px-6 py-3">
+              Explore Classes <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="notes.html" class="btn-secondary text-base px-6 py-3">
+              Revision Notes Library
+            </a>
+          </div>
+        </div>
+
+        <!-- Animated Graphic Feature -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative w-72 h-72 md:w-96 md:h-96 glass-panel rounded-full flex items-center justify-center border border-cyan-500/30 animate-float shadow-2xl">
+            <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-cyan-500/20 to-purple-600/20 blur-xl"></div>
+            <i class="fa-solid fa-atom text-9xl text-cyan-400 opacity-80"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Classes Summary -->
+    <section class="section-padding bg-slate-900/40 border-y border-white/5">
+      <div class="container space-y-8">
+        <div class="text-center max-w-2xl mx-auto">
+          <h2 class="text-3xl font-extrabold text-white">Featured Science Programs</h2>
+          <p class="text-gray-400 text-sm mt-2">Comprehensive curriculum coverage aligned with the Sri Lankan national syllabus.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="glass-card p-6 space-y-4">
+            <span class="text-xs font-bold text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded-md border border-cyan-500/20">Grade 10</span>
+            <h3 class="text-xl font-bold text-white">Grade 10 Science Theory</h3>
+            <p class="text-xs text-gray-400">In-depth foundational syllabus coverage spanning Physics, Chemistry, and Biology essentials.</p>
+            <a href="class-details.html?course=grade10" class="btn-secondary w-full text-xs">View Details</a>
+          </div>
+
+          <div class="glass-card p-6 space-y-4">
+            <span class="text-xs font-bold text-purple-400 bg-purple-500/10 px-2.5 py-1 rounded-md border border-purple-500/20">Grade 11</span>
+            <h3 class="text-xl font-bold text-white">Grade 11 Master Class</h3>
+            <p class="text-xs text-gray-400">Complete curriculum acceleration with focus on key O/L target competencies.</p>
+            <a href="class-details.html?course=grade11" class="btn-secondary w-full text-xs">View Details</a>
+          </div>
+
+          <div class="glass-card p-6 space-y-4">
+            <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-md border border-emerald-500/20">G.C.E. O/L</span>
+            <h3 class="text-xl font-bold text-white">O/L Speed Revision & Paper</h3>
+            <p class="text-xs text-gray-400">Targeted past paper breakdown, model questions, and short note techniques.</p>
+            <a href="class-details.html?course=ol-revision" class="btn-secondary w-full text-xs">View Details</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Accordion -->
+    <section class="section-padding">
+      <div class="container max-w-3xl space-y-6">
+        <div class="text-center">
+          <h2 class="text-3xl font-extrabold text-white">Frequently Asked Questions</h2>
+          <p class="text-gray-400 text-sm mt-1">Get instant answers about classes, formats, and notes.</p>
+        </div>
+
+        <div class="space-y-3">
+          <div class="faq-item">
+            <button class="faq-header">
+              <span>What medium are the classes conducted in?</span>
+              <i class="fa-solid fa-chevron-down faq-icon"></i>
+            </button>
+            <div class="faq-body">
+              All classes and study modules are conducted in Sinhala medium (සිංහල මාධ්‍යය) for Grade 6 through Grade 11.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-header">
+              <span>Are PDF revision notes available online?</span>
+              <i class="fa-solid fa-chevron-down faq-icon"></i>
+            </button>
+            <div class="faq-body">
+              Yes! Students can access unit summaries, diagram guides, and model papers directly from our online Revision Notes Library.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-header">
+              <span>How can I join a physical or online session?</span>
+              <i class="fa-solid fa-chevron-down faq-icon"></i>
+            </button>
+            <div class="faq-body">
+              You can contact us via our WhatsApp hotline or complete the Inquiry Form on the Contact page to register.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-400">
+      <div class="flex items-center gap-2">
+        <i class="fa-solid fa-atom text-cyan-400 text-base"></i>
+        <span>Science With Gayum &copy; 2026. All rights reserved.</span>
+      </div>
+      <div class="flex gap-4">
+        <a href="index.html" class="hover:text-cyan-400">Home</a>
+        <a href="classes.html" class="hover:text-cyan-400">Classes</a>
+        <a href="notes.html" class="hover:text-cyan-400">Notes</a>
+        <a href="teacher.html" class="hover:text-cyan-400">Teacher</a>
+        <a href="contact.html" class="hover:text-cyan-400">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+</html>
